@@ -31,13 +31,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors();
-app.UseWebSockets();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<Chat>("/chat").RequireCors(builder =>
-        builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+app.MapHub<ChatHub>("/chat-hub").RequireCors(builder =>
+        builder.WithOrigins("http://localhost:8080").AllowAnyHeader().AllowAnyMethod().AllowCredentials()
 );
 
 app.Run();
